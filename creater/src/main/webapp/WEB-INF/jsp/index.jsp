@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<script src="lib/jquery-3.6.0.slim.js">
+<script src="js/jquery-3.6.0.slim.js">
 	
 </script>
 <title>Lotto Creater</title>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	function lottoNum() {
 		$.ajax({
 			type : "GET",
@@ -24,13 +24,13 @@
 	}
 
 	lottoNum();
-</script>
+</script> -->
 </head>
 
 
 <body>
 
-	<div id="num1"></div>
+	<div id="num1"><img src="images/1.png"></div>
 	<div id="num2"></div>
 	<div id="num3"></div>
 	<div id="num4"></div>
