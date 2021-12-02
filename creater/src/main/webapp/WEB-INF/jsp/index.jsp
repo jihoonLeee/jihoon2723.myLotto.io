@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,6 +29,7 @@
 <style>
 .col-lg-2 {
 	text-align: center;
+	float: left;
 }
 
 img {
@@ -42,8 +43,8 @@ img {
 	<header class="masthead d-flex align-items-center">
 		<div class="container px-4 px-lg-5 text-center">
 			<h1 class="mb-1">GO TO RICH</h1>
-			<h3 class="mb-5">·Î¶Ç ¹øÈ£ »ı¼º±â</h3>
-			<a id="createLotto" class="btn btn-primary btn-xl" href=#portfolio>¹øÈ£¹Ş±â</a>
+			<h3 class="mb-5">ë¡œë˜ ë²ˆí˜¸ ìƒì„±ê¸°</h3>
+			<a id="createLotto" class="btn btn-primary btn-xl" href=#portfolio>ë²ˆí˜¸ë°›ê¸°</a>
 		</div>
 	</header>
 	<!-- Portfolio-->
@@ -53,12 +54,11 @@ img {
 				<h3 class="text-secondary mb-0">good luck!</h3>
 				<h2 class="mb-5">LOTTO NUMBER</h2>
 			</div>
-			<div class="row gx-0">
+			<div class="row gx-0" id="listId">
 				<c:forEach items="${num}" var="lotto">
-					<span>${lotto}</span>
 					<div class="col-lg-2">
 						<a class="portfolio-item" href="#!"> <img class="img-fluid"
-							src="images/'${lotto}'.png" alt="..." />
+							src="images/${lotto}.png" alt="..." />
 						</a>
 					</div>
 				</c:forEach>
@@ -68,7 +68,7 @@ img {
 	<!-- Map-->
 	<div class="content-section-heading text-center"
 		style="padding-top: 100px;">
-		<h2 class="mb-5">´çÃ·±İ ¼ö·É Àå¼Ò</h2>
+		<h2 class="mb-5">ë‹¹ì²¨ê¸ˆ ìˆ˜ë ¹ ì¥ì†Œ</h2>
 	</div>
 	<div class="map" id="contact">
 		<div id="map" style="width: 100%; height: 400px;"></div>
@@ -106,18 +106,22 @@ img {
 			$.ajax({
 				type : "GET",
 				url : "/getNum",
-				contentType : 'application/json; charset=utf-8',
+				contentType : false,
+				processData : false,
+				cache : false,
 				success : function(data) {
-					console.log(data);
+					var html = jQuery('<div>').html(data);
+					var contents = html.find("div#listId").html();
+					$("#listId").html(contents);
 				},
 				error : function() {
-					alert("Åë½Å ½ÇÆĞ.")
+					alert("í†µì‹  ì‹¤íŒ¨.")
 				}
 			});
 		});
 
 		const locations = [ {
-			place : "³óÇù º»»ç",
+			place : "ë†í˜‘ ë³¸ì‚¬",
 			lat : 37.56587411850793,
 			lng : 126.96741510316097
 		} ];
