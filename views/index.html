@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css"/>
+     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+     <style>
+        /* 로딩 화면 스타일 */
+        #loading {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 100;
+            display: none; /* 초기에는 숨김 */
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="masthead d-flex align-items-center">
+        <div class="container px-4 px-lg-5 text-center">
+            <h1 class="mb-1">GO TO RICH</h1>
+            <h3 class="mb-5">로또 번호 생성기</h3>
+        </div>
+    </header>
+    <section class="content-section py-28" id="emotions">
+        <div class="container">
+            <div class="content-section-heading text-center">
+                <h2 class="mb-5 text-6xl">현재의 기분은..?</h2>
+            </div>
+            <div class="flex justify-center flex-wrap text-center">
+                <button class="btn btn-primary emotion-button mx-2 rounded-full">Happy</button>
+                <button class="btn btn-primary emotion-button mx-2 rounded-full">Sad</button>
+                <button class="btn btn-primary emotion-button mx-2 rounded-full">Angry</button>
+                <!-- Add more buttons as needed -->
+            </div>
+            <div class="flex justify-center flex-wrap text-center mt-4 border border-gray-200 p-4 rounded-md" id="emotionResult">
+                <!-- Emotion result will be added here -->
+            </div>
+            <div class="container px-4 px-lg-5 text-center pt-2">
+                <a id="createLotto" class="btn btn-primary btn-xl" href=#portfolio onclick="recommendNum()">번호받기</a>
+            </div>
+        </div>
+    </section> 
+    <section class="content-section" id="portfolio">
+        <div class="container">
+            <div class="content-section-heading text-center">
+                <h3 class="text-secondary mb-0">good luck!</h3>
+                <h2 class="mb-5">LOTTO NUMBER</h2>
+            </div>
+            <div class="row gx-0" id="listId">
+                <!-- Lotto numbers will be added here -->
+            </div>
+        </div>
+    </section>
+    <!-- Emotion Buttons -->
+    
+    <!-- Map-->
+    <div class="content-section-heading text-center" style="padding-top: 100px;">
+        <h2 class="mb-5">당첨금 수령 장소</h2>
+    </div>
+    <div class="map" id="contact">
+        <div id="map" style="width: 100%; height: 400px;"></div>
+    </div>
+    <div id="loading">Loading...</div>
+</body>
+<script>
+    $(document).ready(function() {
+        $(".emotion-button").click(function() {
+            $("#emotionResult").append($(this));
+        });
+      });
+        $(document).ajaxStart(function() {
+            $('#loading').fadeIn('slow'); // Ajax 호출 시작 시 로딩 화면 표시
+        });
+
+        $(document).ajaxStop(function() {
+            $('#loading').fadeOut('slow'); // 모든 Ajax 호출 완료 시 로딩 화면 숨김
+        });
+      function recommendNum(){
+        $.ajax({
+            url: '/gpt',
+            type: 'POST',
+            data: JSON.stringify({ 
+              emotions: ['좋음','배고픔'] 
+            }),
+            contentType: 'application/json',  // 요청 본문의 타입을 JSON으로 설정
+            dataType: 'json',
+            success: function(data) {
+              console.log(data);
+            },
+            error: function(error) {
+              console.error('Error:', error);
+            }
+          });
+      }
+</script>
+</html>
