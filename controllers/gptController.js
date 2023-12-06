@@ -18,7 +18,7 @@ exports.getNumbers = async (req, res) => {
       },
       {
         "role": "assistant",
-        "content": `대답이나 잡답은 절대 하지말고 [{"number": 1, "reason": "블라블라"},{"number": 2, "reason": "블라블라"},{"number": 25, "reason": "블라블라"},{"number": 13, "reason": "블라블라"},{"number": 16, "reason": "블라블라"},{"number": 11, "reason": "블라블라"}] 이 형태로 데이터만 반환해줘`
+        "content": ` [{"number": 1, "reason": "블라블라"},{"number": 2, "reason": "블라블라"},{"number": 25, "reason": "블라블라"},{"number": 13, "reason": "블라블라"},{"number": 16, "reason": "블라블라"},{"number": 11, "reason": "블라블라"}] 이 형태로 반환해줘`
       },
       {
         "role": "user",
@@ -26,7 +26,7 @@ exports.getNumbers = async (req, res) => {
       },
       {
         "role": "system",
-        "content": "Assistant는 이제 사용자의 감정에 따른 로또 번호와 그 근거를 JSON 형태로 반환해야 합니다. JSON 데이터 이외에 문장은 필요없습니다."
+        "content": "Assistant는 이제 사용자의 감정에 따른 로또 번호와 그 재미있는 근거를 JSON 형태로 반환해야 합니다. JSON 데이터 이외에 문장은 필요없습니다."
       }
     ]
   });

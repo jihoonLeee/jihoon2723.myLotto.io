@@ -1,0 +1,37 @@
+name: deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-20.04
+
+    strategy:
+      matrix:
+        node-version: [16.17.0]
+
+    steps:
+      - name: ✅ 체크아웃 source code.
+        uses: actions/checkout@v3
+
+      - name: ⚙️ ${{ matrix.node-version }} 버전의 노드로 세팅합니다.
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: ⚙️ 환경변수를 설정합니다.
+        working-directory: ./
+        run: |
+          pwd
+          touch .env
+          cat .env
+
+      - name: ✨ 패키지 설치
+        working-directory: ./
+        run: npm
+        
+      - name: ✨ 빌드 과정을 시작
+        working-directory: ./
+        run: npm run build
