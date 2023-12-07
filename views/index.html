@@ -1,67 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="/stylesheets/lotto.css" rel="stylesheet"/>
-</head>
-<body>
-    <header class="masthead d-flex align-items-center">
-        <div class="container px-4 px-lg-5 text-center">
-            <h1 class="text-5xl">GO TO RICH</h1>
-            <h3 class="text-3xl">로또 번호 생성기</h3>
-        </div>
+    <script src="/javascripts/main.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link href="/stylesheets/lotto.css" rel="stylesheet" />
+    <link href="/stylesheets/output.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="masthead d-flex align-items-center py-4 sm:py-0">
+      <div class="container px-4 px-lg-5 text-center">
+        <h1 class="text-4xl sm:text-5xl">GO TO RICH</h1>
+        <h3 class="text-2xl sm:text-3xl">로또 번호 생성기</h3>
+      </div>
     </header>
-    <section class="py-20" id="emotions">
-        <div class="container">
-            <div class="content-section-heading text-center">
-                <h2 class="text-4xl">현재의 기분은..?</h2>
-            </div>
-            <div class="grid grid-rows-3 grid-cols-5 grid-flow-col justify-items-center"  id="emotionList">
-                <button class="emotion-button row-start-1 col-start-1 col-end-2 text-white bg-green-700 hover:bg-green-800 mt-10 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">기쁨</button>
-                <button class="emotion-button row-start-2 col-start-1 col-end-2 text-white bg-green-700 hover:bg-green-800 mt-10 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">슬픔</button>
-                <button class="emotion-button row-start-3 col-start-1 col-end-2 text-white bg-green-700 hover:bg-green-800 mt-10 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">졸림</button>
-                <button class="emotion-button row-start-1 col-start-2 col-end-3 text-white bg-green-700 hover:bg-green-800 mt-10 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">우울함</button>
-                <button class="emotion-button row-start-2 col-start-2 col-end-3 text-white bg-green-700 hover:bg-green-800 mt-10 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">배고픔</button>
-                <button class="emotion-button row-start-3 col-start-2 col-end-3 text-white bg-green-700 hover:bg-green-800 mt-10 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">흥분됨</button>
-                <button class="emotion-button row-start-1 col-start-3 col-end-4 text-white bg-green-700 hover:bg-green-800 mt-10 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">무기력함</button>
-                <button class="emotion-button row-start-2 col-start-3 col-end-4 text-white bg-green-700 hover:bg-green-800 mt-10 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">애매모호</button>
-                <button class="emotion-button row-start-3 col-start-3 col-end-4 text-white bg-green-700 hover:bg-green-800 mt-10 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">붕뜬느낌</button>
-                <button class="emotion-button row-start-1 col-start-4 col-end-5 text-white bg-green-700 hover:bg-green-800 mt-10 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">허무함</button>
-                <button class="emotion-button row-start-2 col-start-4 col-end-5 text-white bg-green-700 hover:bg-green-800 mt-10 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">재밌음</button>
-                <button class="emotion-button row-start-3 col-start-4 col-end-5 text-white bg-green-700 hover:bg-green-800 mt-10 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">긴장됨</button>
-                <button class="emotion-button row-start-1 col-start-5 col-end-6 text-white bg-green-700 hover:bg-green-800 mt-10 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">아무생각없음</button>
-                <button class="emotion-button row-start-2 col-start-5 col-end-6 text-white bg-green-700 hover:bg-green-800 mt-10 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">싱숭생숭함</button>
-                <button class="emotion-button row-start-3 col-start-5 col-end-6 text-white bg-green-700 hover:bg-green-800 mt-10 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">열정넘침</button>
-            </div>
-            <div class="flex justify-center flex-wrap text-center mt-4 border border-gray-200 p-4 rounded-md" id="emotionResult">
-                
-            </div>
-            <div class="container px-4 px-lg-5 text-center pt-2">
-                <button id="createLotto" class="px-6 py-3.5 text-yellow-400 hover:text-white border border-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 dark:focus:ring-yellow-900" onclick="recommendNum()">번호받기</button>
-            </div>
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 justify-items-center"
+    >
+      <button
+        id="emotion_btn"
+        class="choose-button row-start-1 col-start-1 col-end-2"
+      >
+        기분에 따라 번호 받기
+      </button>
+      <button
+        id="dream_btn"
+        class="choose-button row-start-1 col-start-2 col-end-3"
+      >
+        꿈 내용으로 번호 받기
+      </button>
+    </div>
+    <section class="py-10 sm:py-20" id="emotions">
+      <div class="container px-4 px-lg-5">
+        <div class="content-section-heading text-center pb-4">
+          <h2 class="text-3xl sm:text-4xl">현재의 기분은..?</h2>
         </div>
-    </section> 
-    <section class="content-section" id="portfolio">
-        <div class="container">
-            <div class="content-section-heading text-center">
-                <h3 class="text-4xl">good luck!</h3>
-                <h2 class="text-blue-400">LOTTO NUMBER</h2>
-            </div>
-            <div class="row gx-0" id="listId">
-                <!-- Lotto numbers will be added here -->
-             
-            </div>
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 justify-items-center"
+          id="emotionList"
+        >
+          <button class="emotion-button row-start-1 col-start-1 col-end-2">
+            기쁨
+          </button>
+          <button class="emotion-button row-start-2 col-start-1 col-end-2">
+            슬픔
+          </button>
+          <button class="emotion-button row-start-3 col-start-1 col-end-2">
+            졸림
+          </button>
+          <button class="emotion-button row-start-1 col-start-2 col-end-3">
+            우울함
+          </button>
+          <button class="emotion-button row-start-2 col-start-2 col-end-3">
+            배고픔
+          </button>
+          <button class="emotion-button row-start-3 col-start-2 col-end-3">
+            흥분됨
+          </button>
+          <button class="emotion-button row-start-1 col-start-3 col-end-4">
+            무기력함
+          </button>
+          <button class="emotion-button row-start-2 col-start-3 col-end-4">
+            애매모호
+          </button>
+          <button class="emotion-button row-start-3 col-start-3 col-end-4">
+            붕뜬느낌
+          </button>
+          <button class="emotion-button row-start-1 col-start-4 col-end-5">
+            허무함
+          </button>
+          <button class="emotion-button row-start-2 col-start-4 col-end-5">
+            재밌음
+          </button>
+          <button class="emotion-button row-start-3 col-start-4 col-end-5">
+            긴장됨
+          </button>
+          <button class="emotion-button row-start-1 col-start-5 col-end-6">
+            아무생각없음
+          </button>
+          <button class="emotion-button row-start-2 col-start-5 col-end-6">
+            싱숭생숭함
+          </button>
+          <button class="emotion-button row-start-3 col-start-5 col-end-6">
+            열정넘침
+          </button>
         </div>
+        <div
+          class="flex justify-center flex-wrap text-center mt-4 border border-gray-200 p-4 rounded-md"
+          id="emotionResult"
+        ></div>
+        <div class="text-center pt-2">
+          <button
+            id="createLotto"
+            class="px-4 sm:px-6 py-2.5 sm:py-3.5 text-yellow-400 hover:text-white border border-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm sm:text-base px-5 py-2.5 text-center me-2 mb-2 dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 dark:focus:ring-yellow-900"
+            onclick="recommendNum()"
+          >
+            번호받기
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-10 sm:py-20" id="dreams">
+      <div class="container px-4 px-lg-5">
+        <div class="content-section-heading text-center pb-4">
+          <h2 class="text-3xl sm:text-4xl">무슨 꿈을 꾸었나요?</h2>
+        </div>
+
+        <div
+          class="flex justify-center flex-wrap text-center mt-4 border border-gray-200 p-4 rounded-md"
+          id="dreamResult"
+        >
+          <input type="text" id="dreamContent" value="" />
+        </div>
+        <div class="text-center pt-2">
+          <button
+            id="createLotto"
+            class="px-4 sm:px-6 py-2.5 sm:py-3.5 text-yellow-400 hover:text-white border border-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm sm:text-base px-5 py-2.5 text-center me-2 mb-2 dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 dark:focus:ring-yellow-900"
+            onclick="recommendDreamNum()"
+          >
+            번호받기
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section pb-10 sm:pb-0" id="portfolio">
+      <div class="container">
+        <div class="content-section-heading text-center pb-4">
+          <h3 class="text-3xl sm:text-4xl">good luck!</h3>
+          <h2 class="text-blue-400">LOTTO NUMBER</h2>
+        </div>
+        <div class="row gx-0" id="listId">
+          <!-- Lotto numbers will be added here -->
+        </div>
+      </div>
     </section>
     <!-- Emotion Buttons -->
-    
+
     <section class="content-section" id="map">
-        <div class="pt-60 container">
-            <div class="content-section-heading text-center">
-                <h2 class="text-2xl">1등 되세요!</h2>
-            </div>
+      <div class="pt-60 container">
+        <div class="content-section-heading text-center">
+          <h2 class="text-2xl">1등 되세요!</h2>
         </div>
+      </div>
     </section>
     <!-- Map-->
     <!-- <section class="content-section" id="map">
@@ -72,79 +157,15 @@
         </div>
     </section>-->
     <div class="map" id="contact">
-        <div id="map" style="width: 100%; height: 400px;"></div>
-    </div> 
-    <div id="loading">
-        <img id="loading-image" src="/images/money_loading.gif" alt="Loading..." />
-        <div id="loading-text">번호 뽑는중~~~!</div>
+      <div id="map" style="width: 100%; height: 400px"></div>
     </div>
-</body>
-<script>
-    var emotions ;
-    $(document).ready(function() {
-        emotions = [];
-
-        $(".emotion-button").click(function() {
-            var emotion = $(this).text();
-            var parentID = $(this).parent().attr('id');
-            if (parentID == 'emotionList') {
-                if (emotions.length < 5) {  // 선택된 감정이 5개 미만일 때만 추가
-                    emotions.push(emotion+"이고");
-                    $("#emotionResult").append($(this));
-                } else {
-                    alert('기분은 최대 5개까지만 선택할 수 있습니다.');
-                }
-            } else if (parentID == 'emotionResult') {
-                var index = emotions.indexOf(emotion+"이고");
-                if (index > -1) {
-                    emotions.splice(index, 1);
-                }
-                $("#emotionList").append($(this));
-            }
-        });
-      });
-
-        $(document).ajaxStart(function() {
-            $('#loading').fadeIn('slow'); // Ajax 호출 시작 시 로딩 화면 표시
-        });
-
-        $(document).ajaxStop(function() {
-            $('#loading').fadeOut('slow'); // 모든 Ajax 호출 완료 시 로딩 화면 숨김
-        });
-      function recommendNum(){
-        console.log("기분 : " + emotions);
-        if(emotions.length == 0){
-            alert("기분을 말해주세요~");
-            return false;
-        }
-        $.ajax({
-            url: '/gpt',
-            type: 'POST',
-            data: JSON.stringify({emotions }),
-            contentType: 'application/json',  // 요청 본문의 타입을 JSON으로 설정
-            dataType: 'json',
-            success: function(data) {
-              console.log(data);
-              var parsedData = JSON.parse(data);  
-              $.each(parsedData, function(index, item) {
-                var card = `
-                    <div class="p-6 mt-5 max-w-md mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4">
-                        <div class="flex-shrink-0">
-                            <img class="h-12 w-12" src="/images/numbers/${item.number}.png" alt="ChitChat Logo">
-                        </div>
-                        <div>
-                            <div class="text-xl font-medium text-black">행운의 숫자 : ${item.number}</div>
-                            <p class="text-gray-500"> ${item.reason}</p>
-                        </div>
-                    </div>
-                `;
-                $('#listId').append(card);
-                });
-            },
-            error: function(error) {
-              console.error('Error:', error);
-            }
-          });
-      }
-</script>
+    <div id="loading">
+      <img
+        id="loading-image"
+        src="/images/money_loading.gif"
+        alt="Loading..."
+      />
+      <div id="loading-text">번호 뽑는중~~~!</div>
+    </div>
+  </body>
 </html>
