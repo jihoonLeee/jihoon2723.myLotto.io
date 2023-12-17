@@ -8,21 +8,20 @@ const openai = new OpenAI({
 
 exports.getNumberByEmotion = async (req, res) => {
   const emotions = req.body.emotions; 
-  console.log(emotions);
   const result = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
     messages: [
       {
         "role": "system",
-        "content": "내가 지금 느끼는 기분을 한가지 이상 말해주면 1부터 45까지 의 숫자중에 그 기분에 맞춰서 숫자6개만 추천해줄 수 있어? 근거도 포함해서!"
+        "content": "내가 지금 느끼는 기분을 한가지 이상 말해주면 1부터 45까지 의 숫자중에 숫자6개 추천해줄 수 있어?그리고 추천해준 숫자에 대한 과학적이거나 역사적인 사실을 가지고 내가 말해준 기분과 어떤 관계가 있는지 자세하게 설명해줘! 그리고 내용에 대한 기준은 한국인 기준이야."
       },
       {
         "role": "assistant",
-        "content": ` [{"number": 1, "reason": "블라블라"},{"number": 2, "reason": "블라블라"},{"number": 25, "reason": "블라블라"},{"number": 13, "reason": "블라블라"},{"number": 16, "reason": "블라블라"},{"number": 11, "reason": "블라블라"}] 이 형태로 반환해줘`
+        "content": ` [{"number": 1, "reason": "????"},{"number": 2, "reason": "????"},{"number": 25, "reason": "????"},{"number": 13, "reason": "????"},{"number": 16, "reason": "????"},{"number": 11, "reason": "????"}] 이 형태로 반환해줘`
       },
       {
         "role": "user",
-        "content": `내기분은 ${emotions.join(", ")} 이야.`
+        "content": `내기분은 "${emotions.join(", ")}" 이야.`
       },
       {
         "role": "system",
@@ -41,15 +40,15 @@ exports.getNumberByDream = async (req, res) => {
     messages: [
       {
         "role": "system",
-        "content": "내가 꾼 내용에 대해서 말해주면 1부터 45까지 의 숫자중에 그 꿈 내용을 해석해서 숫자6개만 추천해줄 수 있어? 각 숫자에 대한 근거도 포함해서!"
+        "content": "내가 꾼 꿈에 대한 내용에 대해서 말해주면 1부터 45까지 의 숫자중에 숫자6개만 추천해줄 수 있어? 그리고 내가 말한 꿈과 추천해준 숫자에 대한 자세한 해석을 과학적이거나 역사적인 내용을 가지고 설명해줘. 그리고 내용에 대한 기준은 한국인 기준이야."
       },
       {
         "role": "assistant",
-        "content": ` [{"number": 1, "reason": "블라블라"},{"number": 2, "reason": "블라블라"},{"number": 25, "reason": "블라블라"},{"number": 13, "reason": "블라블라"},{"number": 16, "reason": "블라블라"},{"number": 11, "reason": "블라블라"}] 이 형태로 반환해줘`
+        "content": ` [{"number": 1, "reason": "????"},{"number": 2, "reason": "????"},{"number": 25, "reason": "????"},{"number": 13, "reason": "????"},{"number": 16, "reason" : "????"},{"number": 11, "reason": "????"}] 이 형태로 반환해줘`
       },
       {
         "role": "user",
-        "content": `나는 '${dream}' 내용의 꿈을 꿨어.`
+        "content": `나는 "${dream}" 내용의 꿈을 꿨어.`
       },
       {
         "role": "system",

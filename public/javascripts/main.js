@@ -8,13 +8,13 @@ var emotions;
         if (parentID == "emotionList") {
           if (emotions.length < 5) {
             // 선택된 감정이 5개 미만일 때만 추가
-            emotions.push(emotion + "이고");
+            emotions.push(emotion);
             $("#emotionResult").append($(this));
           } else {
             alert("기분은 최대 5개까지만 선택할 수 있습니다.");
           }
         } else if (parentID == "emotionResult") {
-          var index = emotions.indexOf(emotion + "이고");
+          var index = emotions.indexOf(emotion);
           if (index > -1) {
             emotions.splice(index, 1);
           }
@@ -69,6 +69,7 @@ var emotions;
         success: function (data) {
           console.log(data);
           var parsedData = JSON.parse(data);
+          $("#listId").html('');
           $.each(parsedData, function (index, item) {
             var card = `
                     <div class="p-6 mt-5 max-w-md mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4">
@@ -102,8 +103,8 @@ var emotions;
         contentType: "application/json", // 요청 본문의 타입을 JSON으로 설정
         dataType: "json",
         success: function (data) {
-          console.log(data);
           var parsedData = JSON.parse(data);
+          $("#listId").html('');
           $.each(parsedData, function (index, item) {
             var card = `
                         <div class="p-6 mt-5 max-w-md mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4">
